@@ -1,8 +1,8 @@
-package lab5.FlowerStore.src.test.java.flower.store;
+package FlowerStore.src.test.java.flower.store;
 
-import lab5.FlowerStore.src.main.java.flower.store.Flower;
-import lab5.FlowerStore.src.main.java.flower.store.FlowerColor;
-import org.junit.jupiter.api.BeforeEach;
+import FlowerStore.src.main.java.flower.store.Flower;
+import FlowerStore.src.main.java.flower.store.FlowerColor;
+import junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
