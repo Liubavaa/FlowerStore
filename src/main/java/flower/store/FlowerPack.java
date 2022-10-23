@@ -1,4 +1,4 @@
-package lab5.FlowerStore.src.main.java.flower.store;
+package FlowerStore.src.main.java.flower.store;
 
 import lombok.Getter;
 import lombok.Setter;
