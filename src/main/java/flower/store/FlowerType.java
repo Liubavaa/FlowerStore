@@ -4,10 +4,13 @@ public enum FlowerType {
     CHAMOMILE, ROSE, TULIP;
 
     public String toString() {
-        return switch (this) {
-            case ROSE -> "Rose";
-            case CHAMOMILE -> "Chamomile";
-            default -> "Tulip";
-        };
+        switch (this) {
+            case ROSE :
+                return "Rose";
+            case CHAMOMILE :
+                return "Chamomile";
+            default :
+                return "Tulip";
+        }
     }
 }
