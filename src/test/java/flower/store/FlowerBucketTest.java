@@ -1,12 +1,8 @@
-package FlowerStore.src.test.java.flower.store;
+package flower.store;
 
-import FlowerStore.src.main.java.flower.store.Flower;
-import FlowerStore.src.main.java.flower.store.FlowerBucket;
-import FlowerStore.src.main.java.flower.store.FlowerPack;
-import FlowerStore.src.main.java.flower.store.Rose;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
 
 import java.util.Random;
 

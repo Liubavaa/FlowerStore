@@ -1,4 +1,4 @@
-package FlowerStore.src.main.java.flower.store;
+package flower.store;
 
 public class Chamomile extends Flower {
     public Chamomile() {

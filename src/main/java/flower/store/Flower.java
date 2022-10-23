@@ -1,9 +1,7 @@
-package FlowerStore.src.main.java.flower.store;
+package flower.store;
 
 import lombok.Getter;
 import lombok.Setter;
-
-
 
 @Setter
 public class Flower {

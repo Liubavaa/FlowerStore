@@ -1,12 +1,17 @@
 
-package FlowerStore.src.test.java.flower.store;
+package flower.store;
 
-import FlowerStore.src.main.java.flower.store.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
+
+import java.util.Random;
 
 public class StoreTest {
+    private static final Random RANDOM_GENERATOR = new Random();
+    private static final int MAX_QUANTITY = 10;
+    private static final int MAX_PRICE = 100;
+
     private Store store;
 
     @BeforeEach
@@ -16,35 +21,44 @@ public class StoreTest {
 
     @Test
     public void testSearch() {
+        int priceRose = RANDOM_GENERATOR.nextInt(MAX_PRICE);
+        int quantityRose = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
         Flower rose = new Rose();
-        rose.setPrice(10);
-        FlowerPack flowerPack1 = new FlowerPack(rose, 10);
-        FlowerBucket flowerBucket1 = new FlowerBucket();
-        flowerBucket1.add(flowerPack1);
+        rose.setPrice(priceRose);
+        FlowerPack flowerPackRose = new FlowerPack(rose, quantityRose);
+        FlowerBucket flowerBucketRose = new FlowerBucket();
+        flowerBucketRose.add(flowerPackRose);
 
+        int priceTulip = RANDOM_GENERATOR.nextInt(MAX_PRICE);
+        int quantityTulip = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
         Flower tulip = new Tulip();
-        tulip.setPrice(15);
-        FlowerPack flowerPack2 = new FlowerPack(tulip, 5);
-        FlowerBucket flowerBucket2 = new FlowerBucket();
-        flowerBucket2.add(flowerPack1);
-        flowerBucket2.add(flowerPack2);
+        tulip.setPrice(priceTulip);
+        FlowerPack flowerPackTulip = new FlowerPack(tulip, quantityTulip);
+        FlowerBucket flowerBucketTulipRose = new FlowerBucket();
+        flowerBucketTulipRose.add(flowerPackRose);
+        flowerBucketTulipRose.add(flowerPackTulip);
 
+        int priceChamomile = RANDOM_GENERATOR.nextInt(MAX_PRICE);
+        int quantityChamomile = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
         Flower chamomile = new Chamomile();
-        chamomile.setPrice(5);
-        FlowerPack flowerPack3 = new FlowerPack(chamomile, 20);
-        FlowerBucket flowerBucket3 = new FlowerBucket();
-        flowerBucket3.add(flowerPack3);
-        flowerBucket3.add(flowerPack2);
+        chamomile.setPrice(priceChamomile);
+        FlowerPack flowerPackChamomile = new FlowerPack(chamomile, quantityChamomile);
+        FlowerBucket flowerBucketChamomileTulip = new FlowerBucket();
+        flowerBucketChamomileTulip.add(flowerPackChamomile);
+        flowerBucketChamomileTulip.add(flowerPackTulip);
 
-        store.addBucket(flowerBucket1);
-        store.addBucket(flowerBucket2);
-        store.addBucket(flowerBucket3);
+        store.addBucket(flowerBucketRose);
+        store.addBucket(flowerBucketTulipRose);
+        store.addBucket(flowerBucketChamomileTulip);
 
-        Assertions.assertEquals(flowerBucket1, store.search
-                (50, 100, 10, 0, 0).get(0));
-        Assertions.assertEquals(flowerBucket2, store.search
-                (100, 200, 10, 5, 0).get(0));
-        Assertions.assertEquals(flowerBucket3, store.search
-                (175, 175, 0, 5, 20).get(0));
+        Assertions.assertTrue(store.search
+                (priceRose * quantityRose, priceRose * quantityRose,
+                        quantityRose, 0, 0).contains(flowerBucketRose));
+        Assertions.assertTrue(store.search(priceTulip * quantityTulip,
+                priceTulip * quantityTulip + priceRose * quantityRose,
+                quantityRose, quantityTulip, 0).contains(flowerBucketTulipRose));
+        Assertions.assertTrue(store.search
+                (0, 3 * MAX_PRICE * MAX_QUANTITY,
+                        0, quantityTulip, quantityChamomile).contains(flowerBucketChamomileTulip));
     }
 }

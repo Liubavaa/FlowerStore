@@ -1,4 +1,4 @@
-package FlowerStore.src.main.java.flower.store;
+package flower.store;
 
 import java.util.LinkedList;
 import java.util.List;
