@@ -8,7 +8,7 @@ import lombok.Setter;
 public class FlowerBucket {
     private final LinkedList<FlowerPack> FlowerPacks = new LinkedList<>();
 
-    public void add(FlowerPack pack) {FlowerPacks.add(pack);}
+    public void add(FlowerPack pack) { FlowerPacks.add(pack); }
 
     public double getPrice() {
         return FlowerPacks.stream().mapToDouble(FlowerPack::getPrice).sum();

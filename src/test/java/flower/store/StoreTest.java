@@ -51,14 +51,14 @@ public class StoreTest {
         store.addBucket(flowerBucketTulipRose);
         store.addBucket(flowerBucketChamomileTulip);
 
-        Assertions.assertTrue(store.search
-                (priceRose * quantityRose, priceRose * quantityRose,
-                        quantityRose, 0, 0).contains(flowerBucketRose));
+        Assertions.assertTrue(store.search(
+                priceRose * quantityRose, priceRose * quantityRose,
+                quantityRose, 0, 0).contains(flowerBucketRose));
         Assertions.assertTrue(store.search(priceTulip * quantityTulip,
                 priceTulip * quantityTulip + priceRose * quantityRose,
                 quantityRose, quantityTulip, 0).contains(flowerBucketTulipRose));
-        Assertions.assertTrue(store.search
-                (0, 3 * MAX_PRICE * MAX_QUANTITY,
-                        0, quantityTulip, quantityChamomile).contains(flowerBucketChamomileTulip));
+        Assertions.assertTrue(store.search(
+                0, MAX_PRICE * MAX_QUANTITY * MAX_QUANTITY,
+                0, quantityTulip, quantityChamomile).contains(flowerBucketChamomileTulip));
     }
 }
