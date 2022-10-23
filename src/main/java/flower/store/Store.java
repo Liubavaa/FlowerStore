@@ -1,8 +1,7 @@
-package lab5.FlowerStore.src.main.java.flower.store;
+package FlowerStore.src.main.java.flower.store;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
 public class Store {
     private final List<FlowerBucket> buckets = new LinkedList<>();
@@ -16,7 +15,7 @@ public class Store {
         List<FlowerBucket> matchingBuckets = new LinkedList<>();
         for (FlowerBucket bucket : buckets) {
             if (rose_quantity != bucket.getFlowerPacks().stream().
-                    filter(x -> Objects.equals(x.getFlower().getFlowerType(), FlowerType.ROSE)).
+                    filter(x -> x.getFlower().getFlowerType() == FlowerType.ROSE).
                     mapToInt(FlowerPack::getQuantity).sum())
                 continue;
             if (tulip_quantity != bucket.getFlowerPacks().stream().
